@@ -1,0 +1,1 @@
+const helloFunction = () => {return console.log("hej")}
