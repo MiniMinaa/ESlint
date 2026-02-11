@@ -39,3 +39,35 @@ prices.forEach((p) => {
   total += p;
 });
 console.log(`the total is ${total}`);
+
+//Task seven
+
+/*Const user = { name: "Mina" };
+const sayHi = () => {
+  return console.log(`hi ${user.name}`);
+};
+
+sayHi();
+*/
+//Task eight
+const colors = ["red", "blue"];
+colors.forEach((c) => {
+  return console.log(`color ${c}`);
+});
+
+//Task nine
+
+const items = [1, 2, 3];
+const doubled = items.map((i) => {
+  return i * 2;
+});
+console.log(`doubled ${doubled}`);
+
+//Task ten
+/*Const user1 = { isAdmin: true };
+const user2 = { isAdmin: true };*/
+
+const checkAuth = (user) => {
+  return user.isAdmin;
+};
+console.log(`is admin: ${checkAuth(user)}`);
