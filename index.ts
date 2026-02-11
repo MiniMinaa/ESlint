@@ -1,5 +1,5 @@
 //Task one
-const greet = (firstName: string) => {
+/*Const greet = (firstName: string) => {
   return "Hello " + firstName;
 };
 console.log(greet("Student"));
@@ -42,13 +42,13 @@ console.log(`the total is ${total}`);
 
 //Task seven
 
-/*Const user = { name: "Mina" };
+Const user = { name: "Mina" };
 const sayHi = () => {
   return console.log(`hi ${user.name}`);
 };
 
 sayHi();
-*/
+
 //Task eight
 const colors = ["red", "blue"];
 colors.forEach((c) => {
@@ -64,10 +64,11 @@ const doubled = items.map((i) => {
 console.log(`doubled ${doubled}`);
 
 //Task ten
-/*Const user1 = { isAdmin: true };
-const user2 = { isAdmin: true };*/
+Const user1 = { isAdmin: true };
+const user2 = { isAdmin: true };
 
 const checkAuth = (user) => {
   return user.isAdmin;
 };
 console.log(`is admin: ${checkAuth(user)}`);
+*/
