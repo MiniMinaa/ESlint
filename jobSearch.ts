@@ -1,19 +1,34 @@
 // A function that searches for jobs
 // A function that runs our app
 // The command to start everything
+interface ResponseData {
+  hits: Job[];
+}
+interface Employer {
+  name: string;
+}
+interface WorkplaceAddress {
+  municipality: string;
+}
+interface Job {
+  publication_date: string;
+  headline: string;
+  employer: Employer;
+  workplace_address: WorkplaceAddress;
+}
 
-const searchJobs = async (keyword: string) => {
+const searchJobs = async (keyword: string): Promise<void> => {
   try {
-    const result = `https://jobsearch.api.jobtechdev.se/search?q=${keyword}&offset=0&limit=10`;
-    const response = await fetch(result);
-    const data = await response.json();
+    const url: string = `https://jobsearch.api.jobtechdev.se/search?q=${keyword}&offset=0&limit=10`;
+    const response: Response = await fetch(url);
+    const data: ResponseData = await response.json();
 
     console.log(`\nFound ${data.hits.length} jobs`);
     console.log("-".repeat(50));
-    //Console.log(data);
+    console.log(data);
 
-    data.hits.forEach((job: any, index: number) => {
-      const pubDate = new Date(job.publication_date);
+    data.hits.forEach((job: Job, index: number) => {
+      const pubDate: Date = new Date(job.publication_date);
       //Console.log("pubDate: ", pubDate);
 
       console.log(`${index + 1}. ${job.headline}`);
@@ -27,11 +42,11 @@ const searchJobs = async (keyword: string) => {
   }
 };
 
-const runApp = () => {
+const runApp = (): void => {
   try {
     console.log("Welcome to the Job Search App!");
     console.log("This app searches for jobs using JobTeach API");
-    const keyword = "Helsingborg";
+    const keyword: string = "Helsingborg";
     searchJobs(keyword);
   } catch (error) {
     console.error(error);
