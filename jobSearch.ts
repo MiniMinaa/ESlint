@@ -25,12 +25,17 @@ const searchJobs = async (profession: string, city: string): Promise<void> => {
       throw new Error(`error! status: ${response.status}`);
     }
     const data: ResponseData = await response.json();
+    if (!data.hits || data.hits.length === 0) {
+      console.log("no jobs found.");
+      return;
+    }
 
     console.log(`\nFound ${data.hits.length} jobs`);
     console.log("-".repeat(50));
     //Console.log(data);
 
     data.hits.forEach((job: Job, index: number) => {
+      console.dir(job, { depth: 2 });
       const pubDate: Date = new Date(job.publication_date);
       //Console.log("pubDate: ", pubDate);
 
@@ -41,8 +46,12 @@ const searchJobs = async (profession: string, city: string): Promise<void> => {
       console.log("-".repeat(50));
     });
   } catch (error) {
-    console.log("something went wrong when fetching jobs");
-    console.error(error);
+    if (error instanceof Error) {
+      console.log("something went wrong when fetching jobs");
+      console.error("Details:", error.message);
+    } else {
+      console.error(error);
+    }
   }
 };
 
